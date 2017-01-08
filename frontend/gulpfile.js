@@ -33,3 +33,16 @@ gulp.task('fonts', function () {
         .pipe(size())
         .pipe(gulp.dest('./public/fonts'));
 });
+
+gulp.task('build-html', function () {
+    'use strict';
+    var twig = require('gulp-twig');
+    return gulp.src(
+        [
+            './twig/dashboard.twig',
+            './twig/articles.twig'
+        ]
+    )
+        .pipe(twig())
+        .pipe(gulp.dest('./html/'));
+});

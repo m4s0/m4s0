@@ -46,8 +46,7 @@ gulp.task('build-html', function () {
     };
     return gulp.src(
         [
-            './twig/dashboard.twig',
-            './twig/articles.twig'
+            './twig/*.twig'
         ]
     )
         .pipe(twig(options))

@@ -35,54 +35,25 @@
                             </thead>
 
                             <tbody>
-                            <tr>
-                                <td>Title1</td>
-                                <td>Author1</td>
-                                <td>Categories1</td>
-                                <td>Tags1</td>
-                                <td>Date1</td>
-                                <td>Status1</td>
-                                <td>
-                                    <a class="btn btn-info" href="#">
-                                        <i class="fa fa-edit fa-fw" aria-hidden="true"></i>
-                                    </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="fa fa-trash-o fa-fw" aria-hidden="true"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Title2</td>
-                                <td>Author2</td>
-                                <td>Categories2</td>
-                                <td>Tags2</td>
-                                <td>Date2</td>
-                                <td>Status2</td>
-                                <td>
-                                    <a class="btn btn-info" href="#">
-                                        <i class="fa fa-edit fa-fw" aria-hidden="true"></i>
-                                    </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="fa fa-trash-o fa-fw" aria-hidden="true"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Title3</td>
-                                <td>Author3</td>
-                                <td>Categories3</td>
-                                <td>Tags3</td>
-                                <td>Date3</td>
-                                <td>Status3</td>
-                                <td>
-                                    <a class="btn btn-info" href="#">
-                                        <i class="fa fa-edit fa-fw" aria-hidden="true"></i>
-                                    </a>
-                                    <a class="btn btn-danger" href="#">
-                                        <i class="fa fa-trash-o fa-fw" aria-hidden="true"></i>
-                                    </a>
-                                </td>
-                            </tr>
+
+                            {% for i in 0..10 %}
+                                <tr>
+                                    <td>{{ faker.lorem.sentence(1) }}</td>
+                                    <td>{{ faker.internet.userName }}</td>
+                                    <td>{{ faker.lorem.sentence(1) }}</td>
+                                    <td>{{ faker.lorem.sentence(1) }}</td>
+                                    <td>{{ faker.date.past|date('Y-d-m H:i:s') }}</td>
+                                    <td>Status1</td>
+                                    <td>
+                                        <a class="btn btn-info" href="article.html">
+                                            <i class="fa fa-edit fa-fw" aria-hidden="true"></i>
+                                        </a>
+                                        <a class="btn btn-danger" href="#">
+                                            <i class="fa fa-trash-o fa-fw" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
                             </tbody>
                         </table>
                     </div>

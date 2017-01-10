@@ -1,0 +1,58 @@
+{% extends "base.twig" %}
+
+{% block page %}
+    <div class="container main-container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box box-primary">
+                    <div class="box-header">
+                        <h3 class="box-title">Tags</h3>
+
+                        <div class="box-tools">
+                            <div class="input-group input-group-sm" style="width: 150px;">
+                                <input type="text" name="table_search" class="form-control pull-right"
+                                       placeholder="Search">
+
+                                <div class="input-group-btn">
+                                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Slug</th>
+                                <th style="width: 110px">Actions</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+
+                            {% for i in 0..10 %}
+                                <tr>
+                                    <td>{{ faker.lorem.sentence(1) }}</td>
+                                    <td>{{ faker.lorem.sentence(1) }}</td>
+                                    <td>{{ faker.lorem.sentence(1) }}</td>
+                                    <td>
+                                        <a class="btn btn-info" href="tag.html">
+                                            <i class="fa fa-edit fa-fw" aria-hidden="true"></i>
+                                        </a>
+                                        <a class="btn btn-danger" href="#">
+                                            <i class="fa fa-trash-o fa-fw" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

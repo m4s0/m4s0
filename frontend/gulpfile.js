@@ -6,6 +6,8 @@ var sourcemaps = require('gulp-sourcemaps');
 var less = require('gulp-less');
 var cssmin = require('gulp-cssmin');
 var path = require('path');
+var twig = require('gulp-twig');
+var faker = require('faker');
 
 gulp.task('css', function () {
     return gulp.src(['./css/custom-bootstrap/custom-bootstrap.less', 'vendor/components-font-awesome/less/font-awesome.less'])
@@ -36,13 +38,18 @@ gulp.task('fonts', function () {
 
 gulp.task('build-html', function () {
     'use strict';
-    var twig = require('gulp-twig');
+
+    var options = {
+        data: {
+            faker: faker
+        }
+    };
     return gulp.src(
         [
             './twig/dashboard.twig',
             './twig/articles.twig'
         ]
     )
-        .pipe(twig())
+        .pipe(twig(options))
         .pipe(gulp.dest('./html/'));
 });

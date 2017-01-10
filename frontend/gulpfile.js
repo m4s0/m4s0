@@ -8,7 +8,7 @@ var cssmin = require('gulp-cssmin');
 var path = require('path');
 
 gulp.task('css', function () {
-    return gulp.src(['./custom-bootstrap.less', 'vendor/components-font-awesome/less/font-awesome.less'])
+    return gulp.src(['./css/custom-bootstrap/custom-bootstrap.less', 'vendor/components-font-awesome/less/font-awesome.less'])
         .pipe(less({
             paths: [path.join(__dirname, 'less', 'includes')]
         }))

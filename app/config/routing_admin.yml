@@ -1,0 +1,5 @@
+admin_tags:
+    path:     /admin/tags
+    defaults:
+        _controller: AppBundle:Admin/Tags:tagsList
+    methods: [GET]

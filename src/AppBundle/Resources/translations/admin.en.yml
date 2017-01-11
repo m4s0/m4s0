@@ -1,0 +1,17 @@
+login:
+    form_name: 'Login'
+    username: 'Username'
+    enter_username: 'Enter your username here'
+    password: 'Password'
+    enter_password: 'Enter your password here'
+    remember_me: 'Remember me'
+    submit: 'Login'
+
+header_menu:
+    dashboard: 'Dashboard'
+    articles: 'Articles'
+    categories: 'Categories'
+    tags: 'Tags'
+    visit_page: 'Visit Page'
+    settings: 'Settings'
+    logout: 'Logout'

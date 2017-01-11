@@ -1,3 +1,27 @@
+admin_login:
+    path:     /admin/login
+    defaults:
+        _controller: AppBundle:Admin/Security:login
+    methods: [GET, POST]
+
+#admin_login_check:
+#    path:     /admin/login-check
+#    defaults:
+#        _controller: AppBundle:Admin/Security:loginCheck
+#    methods: [POST]
+
+admin_logout:
+    path:     /admin/logout
+    defaults:
+        _controller: AppBundle:Admin/Security:logout
+    methods: [GET, POST]
+
+admin_home:
+    path:     /admin
+    defaults:
+        _controller: AppBundle:Admin/Home:home
+    methods: [GET]
+
 admin_tags:
     path:     /admin/tags
     defaults:

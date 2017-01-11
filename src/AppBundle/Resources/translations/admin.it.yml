@@ -1,0 +1,17 @@
+login:
+    form_name: 'Accedi'
+    username: 'Username'
+    enter_username: 'Inserisci il tuo username qui'
+    password: 'Password'
+    enter_password: 'Inserisci il tuo password qui'
+    remember_me: 'Ricordami'
+    submit: 'Accedi'
+
+header_menu:
+    dashboard: 'Dashboard'
+    articles: 'Articoli'
+    categories: 'Categorie'
+    tags: 'Tags'
+    visit_page: 'Visita la Pagina'
+    settings: 'Impostazioni'
+    logout: 'Esci'

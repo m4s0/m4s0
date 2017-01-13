@@ -1,11 +1,26 @@
 # To get started with security, check out the documentation:
 # http://symfony.com/doc/current/security.html
+# http://symfony.com/doc/current/reference/configuration/security.html
 security:
 
     # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
         in_memory:
-            memory: ~
+            memory:
+                users:
+                    user:
+                        password: user
+                        roles: 'ROLE_USER'
+                    admin:
+                        password: admin
+                        roles: 'ROLE_ADMIN'
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -13,12 +28,71 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        main:
+        admin:
             anonymous: ~
-            # activate different ways to authenticate
 
-            # http_basic: ~
-            # http://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+            form_login:
+                # submit the login form here
+                check_path: admin_login
+#                check_path: admin_login_check
 
-            # form_login: ~
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+                # the user is redirected here when they need to log in
+                login_path: admin_login
+
+                # if true, forward the user to the login form instead of redirecting
+                use_forward: false
+
+                # login success redirecting options (read further below)
+#                always_use_default_target_path: true
+#                default_target_path:            admin_home
+                target_path_parameter:          _target_path
+                use_referer:                    false
+
+                # login failure redirecting options (read further below)
+                failure_path:    admin_login
+                failure_forward: false
+                failure_path_parameter: _failure_path
+                failure_handler: ~
+                success_handler: ~
+
+                # csrf token options
+                csrf_parameter:       _csrf_token
+                csrf_token_id:        authenticate
+#                csrf_token_generator: ~
+
+                # by default, the login form *must* be a POST, not a GET
+                post_only:      true
+                remember_me:    true
+
+                # by default, a session must exist before submitting an authentication request
+                # if false, then Request::hasPreviousSession is not called during authentication
+                # new in Symfony 2.3
+                require_previous_session: true
+
+            remember_me:
+                token_provider:         ~
+                secret:                 "%secret%"
+                name:                   "remember_me"
+                lifetime:               10 # in seconds
+#                path:                   /foo
+#                domain:                 somedomain.foo
+#                secure:                 false
+#                httponly:               true
+                always_remember_me:     false
+                remember_me_parameter:  _remember_me
+
+            logout:
+                path:                 admin_logout
+                target:               admin_home
+                success_handler:      ~
+                invalidate_session:   true
+                delete_cookies:
+                    name:
+                        path:                 null
+                        domain:               null
+                handlers:             []
+
+    access_control:
+        - { path: ^/admin/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/.*, roles: ROLE_ADMIN }
+        - { path: ^/admin, roles: ROLE_USER }

@@ -1,0 +1,7 @@
+ram:           4096
+cpus:          2
+ipaddress:     10.10.10.10
+name:          m4s0-centos-box
+synced_folder: "/var/www"
+hosts:
+  - dev.m4s0.com

@@ -4,11 +4,11 @@ admin_login:
         _controller: AppBundle:Admin/Security:login
     methods: [GET, POST]
 
-#admin_login_check:
-#    path:     /admin/login-check
-#    defaults:
-#        _controller: AppBundle:Admin/Security:loginCheck
-#    methods: [POST]
+admin_login_check:
+    path:     /admin/login-check
+    defaults:
+        _controller: AppBundle:Admin/Security:loginCheck
+    methods: [POST]
 
 admin_logout:
     path:     /admin/logout
